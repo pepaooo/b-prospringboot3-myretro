@@ -64,14 +64,19 @@ public class RetroBoardController {
     }
 
     @GetMapping("/{uuid}/cards/{uuidCard}")
-    public ResponseEntity<Card> getCardFromRetroBoard(@PathVariable UUID uuid, @PathVariable UUID uuidCard) {
-        return ResponseEntity.ok(retroBoardService.findCardByUUIDFromRetroBoard(uuid, uuidCard));
+    public ResponseEntity<Card> getCardByUUID(@PathVariable UUID uuid, @PathVariable UUID uuidCard) {
+        return ResponseEntity.ok(retroBoardService.findCardByUUID(uuid, uuidCard));
+    }
+
+    @PutMapping("/{uuid}/cards/{uuidCard}")
+    public ResponseEntity<Card> updateCardByUUID(@PathVariable UUID uuid, @PathVariable UUID uuidCard, @RequestBody Card card) {
+        return ResponseEntity.ok(retroBoardService.saveCard(uuid, card));
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{uuid}/cards/{uuidCard}")
     public void deleteCardFromRetroBoard(@PathVariable UUID uuid, @PathVariable UUID uuidCard) {
-        retroBoardService.removeCardFromRetroBoard(uuid, uuidCard);
+        retroBoardService.removeCardByUUID(uuid, uuidCard);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

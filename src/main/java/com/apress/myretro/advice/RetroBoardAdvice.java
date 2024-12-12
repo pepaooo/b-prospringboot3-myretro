@@ -16,7 +16,7 @@ import java.util.UUID;
 @Aspect
 public class RetroBoardAdvice {
 
-    @Around("execution(* com.apress.myretro.persistence.RetroBoardRepository.findById(java.util.UUID))")
+    @Around("execution(* com.apress.myretro.persistence.RetroBoardRepository.findById(..))")
     public Object checkFindRetroBoard(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         log.info("[ADVICE] {}", proceedingJoinPoint.getSignature().getName());
         Optional<RetroBoard> retroBoard = (Optional<RetroBoard>) proceedingJoinPoint.proceed(new Object[]{
