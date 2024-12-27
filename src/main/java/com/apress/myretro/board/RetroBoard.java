@@ -12,9 +12,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 public class RetroBoard {
+
     private UUID id;
+
     @NotBlank(message = "A name must be provided")
     private String name;
+
     @Singular
     private Map<UUID, Card> cards = new HashMap<>();
 }

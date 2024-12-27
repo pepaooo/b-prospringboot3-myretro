@@ -2,15 +2,10 @@ package com.apress.myretro.service;
 
 import com.apress.myretro.board.Card;
 import com.apress.myretro.board.RetroBoard;
-import com.apress.myretro.exception.CardNotFoundException;
-import com.apress.myretro.persistence.Repository;
 import com.apress.myretro.persistence.SimpleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @AllArgsConstructor

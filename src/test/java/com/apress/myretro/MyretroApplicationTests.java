@@ -83,7 +83,7 @@ class MyretroApplicationTests {
 
     @Test
     void removeCardsFromRetroBoardTest() {
-        service.removeCardFromRetroBoard(retroBoardUUID, cardUUID);
+        service.removeCardByUUID(retroBoardUUID, cardUUID);
         RetroBoard retroBoard = service.findById(retroBoardUUID);
         assertThat(retroBoard).isNotNull();
         assertThat(retroBoard.getCards()).isNotEmpty();
@@ -92,7 +92,7 @@ class MyretroApplicationTests {
 
     @Test
     void findCardByIdInRetroBoardTest() {
-        Card card = service.findCardByUUIDFromRetroBoard(retroBoardUUID, mehCardUUID);
+        Card card = service.findCardByUUID(retroBoardUUID, mehCardUUID);
         assertThat(card).isNotNull();
         assertThat(card.getId()).isEqualTo(mehCardUUID);
     }
@@ -100,7 +100,7 @@ class MyretroApplicationTests {
     @Test
     void notFoundCardInRetroBoardTest() {
         assertThatThrownBy(() -> {
-            service.findCardByUUIDFromRetroBoard(retroBoardUUID, UUID.randomUUID());
+            service.findCardByUUID(retroBoardUUID, UUID.randomUUID());
         }).isInstanceOf(CardNotFoundException.class);
     }
 }

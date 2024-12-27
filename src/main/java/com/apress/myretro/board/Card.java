@@ -17,7 +17,7 @@ public class Card {
 
     private UUID id;
 
-    @NotBlank
+    @NotBlank(message = "A comment must be provided")
     private String comment;
 
     @NotNull

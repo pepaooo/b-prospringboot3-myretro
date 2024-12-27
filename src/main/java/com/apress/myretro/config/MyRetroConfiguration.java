@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 @EnableConfigurationProperties({MyRetroProperties.class})
@@ -28,7 +27,8 @@ public class MyRetroConfiguration {
                     .card(UUID.fromString("6cdb30d6-43f2-42b7-b0db-f3acbc53d467"), Card.builder().id(UUID.randomUUID()).comment("When is the next one?").cardType(CardType.MEH).build())
                     .card(UUID.fromString("9de1f7f9-2470-4c8d-86f2-371203620fcd"), Card.builder().id(UUID.randomUUID()).comment("Not enough time to talk to everyone").cardType(CardType.SAD).build())
                     .build();
-            retroBoardService.save(retroBoard);
+            RetroBoard save = retroBoardService.save(retroBoard);
+            System.out.println(save);
         };
     }
 }
